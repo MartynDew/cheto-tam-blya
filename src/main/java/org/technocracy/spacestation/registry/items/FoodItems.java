@@ -28,7 +28,7 @@ public final class FoodItems {
             new Item(new Item.Settings().food(new FoodComponent.Builder()
                     .nutrition(6).saturationModifier(1.2f)
                     .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 300, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 150, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 150, 0), 1.0f)
                     .build()))
     );
 
@@ -79,7 +79,7 @@ public final class FoodItems {
             Registries.ITEM, Identifier.of(SpaceStation.MOD_ID, "bananium"),
             new Item(new Item.Settings().food(new FoodComponent.Builder()
                     .nutrition(3).saturationModifier(0.4f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 300, 4), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 300, 4), 1.0f)
                     .build()))
     );
 
@@ -135,7 +135,7 @@ public final class FoodItems {
             Registries.ITEM, Identifier.of(SpaceStation.MOD_ID, "cutlet_raw"),
             new Item(new Item.Settings().food(new FoodComponent.Builder()
                     .nutrition(2).saturationModifier(0.2f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 100, 0), 0.3f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 100, 0), 0.3f)
                     .build()))
     );
 
@@ -161,7 +161,7 @@ public final class FoodItems {
             Registries.ITEM, Identifier.of(SpaceStation.MOD_ID, "meatball"),
             new Item(new Item.Settings().food(new FoodComponent.Builder()
                     .nutrition(2).saturationModifier(0.1f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 100, 0), 0.3f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 100, 0), 0.3f)
                     .build()))
     );
 
@@ -185,7 +185,7 @@ public final class FoodItems {
             Registries.ITEM, Identifier.of(SpaceStation.MOD_ID, "bread_meat_raw"),
             new Item(new Item.Settings().food(new FoodComponent.Builder()
                     .nutrition(3).saturationModifier(0.3f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 100, 0), 0.25f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 100, 0), 0.25f)
                     .build()))
     );
 
@@ -217,7 +217,7 @@ public final class FoodItems {
             Registries.ITEM, Identifier.of(SpaceStation.MOD_ID, "bread_sausage_raw"),
             new Item(new Item.Settings().food(new FoodComponent.Builder()
                     .nutrition(3).saturationModifier(0.3f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 100, 0), 0.25f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 100, 0), 0.25f)
                     .build()))
     );
 
