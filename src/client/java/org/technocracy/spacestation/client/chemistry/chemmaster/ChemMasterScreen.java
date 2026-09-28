@@ -25,7 +25,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
     private static final int SLOT_PANEL_LEFT = 6;
     private static final int SLOT_PANEL_TOP = 20;
     private static final int SLOT_PANEL_WIDTH = 100;
-    private static final int SLOT_PANEL_HEIGHT = 112;
+    private static final int SLOT_PANEL_HEIGHT = 188;
     private static final int GRIND_SLOT_X = 15;
     private static final int GRIND_SLOT_Y = 38;
     private static final int CONTAINER_SLOT_X = 55;
