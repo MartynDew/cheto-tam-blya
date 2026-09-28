@@ -23,7 +23,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
 
     // Left panel — grinding + container slots (side by side)
     private static final int SLOT_PANEL_LEFT = 6;
-    private static final int SLOT_PANEL_TOP = 24;
+    private static final int SLOT_PANEL_TOP = 20;
     private static final int SLOT_PANEL_WIDTH = 100;
     private static final int SLOT_PANEL_HEIGHT = 112;
     private static final int GRIND_SLOT_X = 15;
