@@ -109,7 +109,7 @@ public class JeiPlugin implements IModPlugin {
         for (ChemRegistry.GrindingRecipe recipe : ChemRegistry.getGrindingRecipes()) {
             ItemStack input = new ItemStack(Registries.ITEM.get(recipe.ingredient()));
             List<ItemStack> outputs = recipe.results().entrySet().stream()
-                    .map(entry -> beaker(entry.getKey(), entry.getValue() * 25.0))
+                    .map(entry -> beaker(entry.getKey(), entry.getValue()))
                     .toList();
             grinding.add(new ChemMasterJeiRecipe(List.of(input), outputs));
         }
@@ -118,10 +118,10 @@ public class JeiPlugin implements IModPlugin {
         List<ChemMasterJeiRecipe> reactions = new ArrayList<>();
         for (ChemRegistry.ReactionRecipe recipe : ChemRegistry.getReactions()) {
             List<ItemStack> inputs = recipe.reagents().entrySet().stream()
-                    .map(entry -> beaker(entry.getKey(), entry.getValue() * 25.0))
+                    .map(entry -> beaker(entry.getKey(), entry.getValue()))
                     .toList();
             List<ItemStack> outputs = recipe.results().entrySet().stream()
-                    .map(entry -> beaker(entry.getKey(), entry.getValue() * 25.0))
+                    .map(entry -> beaker(entry.getKey(), entry.getValue()))
                     .toList();
             reactions.add(new ChemMasterJeiRecipe(inputs, outputs));
         }
