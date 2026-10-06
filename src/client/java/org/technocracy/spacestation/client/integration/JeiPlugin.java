@@ -5,6 +5,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -15,6 +16,7 @@ import org.technocracy.spacestation.chemistry.ChemRegistry;
 import org.technocracy.spacestation.chemistry.sublimator.SublimationRecipe;
 import org.technocracy.spacestation.client.integration.assembly.AssemblyJeiCategory;
 import org.technocracy.spacestation.client.integration.assembly.AssemblyJeiRecipe;
+import org.technocracy.spacestation.client.integration.chemmaster.BeakerSubtypeInterpreter;
 import org.technocracy.spacestation.client.integration.chemmaster.ChemMasterJeiCategory;
 import org.technocracy.spacestation.client.integration.chemmaster.ChemMasterJeiRecipe;
 import org.technocracy.spacestation.client.integration.mutation.MutationJeiCategory;
@@ -107,7 +109,7 @@ public class JeiPlugin implements IModPlugin {
         for (ChemRegistry.GrindingRecipe recipe : ChemRegistry.getGrindingRecipes()) {
             ItemStack input = new ItemStack(Registries.ITEM.get(recipe.ingredient()));
             List<ItemStack> outputs = recipe.results().entrySet().stream()
-                    .map(entry -> beaker(entry.getKey(), entry.getValue() * 25.0))
+                    .map(entry -> beaker(entry.getKey(), entry.getValue()))
                     .toList();
             grinding.add(new ChemMasterJeiRecipe(List.of(input), outputs));
         }
@@ -116,10 +118,10 @@ public class JeiPlugin implements IModPlugin {
         List<ChemMasterJeiRecipe> reactions = new ArrayList<>();
         for (ChemRegistry.ReactionRecipe recipe : ChemRegistry.getReactions()) {
             List<ItemStack> inputs = recipe.reagents().entrySet().stream()
-                    .map(entry -> beaker(entry.getKey(), entry.getValue() * 25.0))
+                    .map(entry -> beaker(entry.getKey(), entry.getValue()))
                     .toList();
             List<ItemStack> outputs = recipe.results().entrySet().stream()
-                    .map(entry -> beaker(entry.getKey(), entry.getValue() * 25.0))
+                    .map(entry -> beaker(entry.getKey(), entry.getValue()))
                     .toList();
             reactions.add(new ChemMasterJeiRecipe(inputs, outputs));
         }
@@ -194,6 +196,14 @@ public class JeiPlugin implements IModPlugin {
         if (tool.needQualities().contains(ToolQuality.ANCHORING)) return DISASSEMBLY_ANCHORING;
         if (tool.needQualities().contains(ToolQuality.IGNITION)) return DISASSEMBLY_IGNITION;
         return DISASSEMBLY_GENERIC;
+    }
+
+    @Override
+    public void registerItemSubtypes(ISubtypeRegistration registration) {
+        registration.registerSubtypeInterpreter(
+                ChemItems.BEAKER,
+                BeakerSubtypeInterpreter.INSTANCE
+        );
     }
 
     @Override
