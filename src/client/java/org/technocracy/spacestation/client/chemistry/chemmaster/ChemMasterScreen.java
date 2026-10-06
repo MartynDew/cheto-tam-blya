@@ -24,34 +24,37 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
     // Left panel — grinding + container slots (side by side)
     private static final int SLOT_PANEL_LEFT = 6;
     private static final int SLOT_PANEL_TOP = 20;
-    private static final int SLOT_PANEL_WIDTH = 90;
-    private static final int SLOT_PANEL_HEIGHT = 90;
+    private static final int SLOT_PANEL_WIDTH = 100;
+    private static final int SLOT_PANEL_HEIGHT = 188;
     private static final int GRIND_SLOT_X = 15;
-    private static final int GRIND_SLOT_Y = 30;
+    private static final int GRIND_SLOT_Y = 38;
     private static final int CONTAINER_SLOT_X = 55;
-    private static final int CONTAINER_SLOT_Y = 30;
+    private static final int CONTAINER_SLOT_Y = 38;
 
     // Right panels — scrollable chemical lists
-    private static final int CHEM_PANEL_LEFT = 100;
+    private static final int CHEM_PANEL_LEFT = 112;
     private static final int CHEM_PANEL_WIDTH = BG_WIDTH - CHEM_PANEL_LEFT - 6;
     private static final int MASTER_PANEL_TOP = 20;
-    private static final int MASTER_LIST_TOP = 30;
-    private static final int MASTER_LIST_HEIGHT = 90;
-    private static final int CONTAINER_PANEL_TOP = 122;
+    private static final int MASTER_LIST_TOP = 36;
+    private static final int MASTER_LIST_HEIGHT = 72;
+    private static final int CONTAINER_PANEL_TOP = 116;
     private static final int CONTAINER_LIST_TOP = 132;
-    private static final int CONTAINER_LIST_HEIGHT = 90;
+    private static final int CONTAINER_LIST_HEIGHT = 72;
 
     private static final int ROW_HEIGHT = 18;
     private static final int MASTER_ROWS_VISIBLE = MASTER_LIST_HEIGHT / ROW_HEIGHT;
     private static final int CONTAINER_ROWS_VISIBLE = CONTAINER_LIST_HEIGHT / ROW_HEIGHT;
 
     private static final int PLAYER_INV_TOP = 226;
+    private static final int PLAYER_INV_LEFT = 59;
 
     private int masterScrollOffset = 0;
     private int containerScrollOffset = 0;
 
     private static final double[] AMOUNTS = {1, 5, 10, 25, 50, 100};
     private static final String[] LABELS = {"1", "5", "10", "25", "50", "All"};
+
+    private static final int TRANSFER_LABELS_GAP = 16;
 
     private List<Map.Entry<String, Double>> masterChems = new ArrayList<>();
     private List<Map.Entry<String, Double>> containerChems = new ArrayList<>();
@@ -72,7 +75,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
         super.init();
         this.titleX = 8;
         this.titleY = 6;
-        this.playerInventoryTitleX = 8;
+        this.playerInventoryTitleX = PLAYER_INV_LEFT;
         this.playerInventoryTitleY = PLAYER_INV_TOP - 12;
     }
 
@@ -131,16 +134,16 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
         context.fill(x + GRIND_SLOT_X, y + GRIND_SLOT_Y, x + GRIND_SLOT_X + 36, y + GRIND_SLOT_Y + 36, 0xFF1A1A1A);
         context.drawBorder(x + GRIND_SLOT_X, y + GRIND_SLOT_Y, 36, 36, 0xFF777777);
         context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("gui.spacestation.chem_master.grinding"),
-                x + GRIND_SLOT_X + 18, y + GRIND_SLOT_Y - 6, 0xAAAAAA);
+                x + GRIND_SLOT_X + 18, y + GRIND_SLOT_Y - 10, 0xAAAAAA);
 
         context.fill(x + CONTAINER_SLOT_X, y + CONTAINER_SLOT_Y,
                 x + CONTAINER_SLOT_X + 36, y + CONTAINER_SLOT_Y + 36, 0xFF1A1A1A);
         context.drawBorder(x + CONTAINER_SLOT_X, y + CONTAINER_SLOT_Y, 36, 36, 0xFF777777);
         context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("gui.spacestation.chem_master.flask"),
-                x + CONTAINER_SLOT_X + 18, y + CONTAINER_SLOT_Y - 6, 0xAAAAAA);
+                x + CONTAINER_SLOT_X + 18, y + CONTAINER_SLOT_Y - 10, 0xAAAAAA);
 
-        context.fill(x + GRIND_SLOT_X, y + 72, x + CONTAINER_SLOT_X + 36, y + 82, 0xFF1A1A1A);
-        context.drawBorder(x + GRIND_SLOT_X, y + 72, CONTAINER_SLOT_X + 36 - GRIND_SLOT_X, 10, 0xFF555555);
+        context.fill(x + GRIND_SLOT_X, y + 80, x + CONTAINER_SLOT_X + 36, y + 90, 0xFF1A1A1A);
+        context.drawBorder(x + GRIND_SLOT_X, y + 80, CONTAINER_SLOT_X + 36 - GRIND_SLOT_X, 10, 0xFF555555);
 
         // Right — master storage list
         int masterPanelH = MASTER_LIST_TOP - MASTER_PANEL_TOP + MASTER_LIST_HEIGHT + 4;
@@ -169,7 +172,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
             }
         }
 
-        context.drawHorizontalLine(x, x + BG_WIDTH, y + PLAYER_INV_TOP - 2, 0xFF555555);
+        context.drawHorizontalLine(x, x + BG_WIDTH - 2, y + PLAYER_INV_TOP - 2, 0xFF555555);
 
         renderChemList(context, mouseX, mouseY,
                 x + CHEM_PANEL_LEFT + 1, y + MASTER_LIST_TOP,
@@ -202,7 +205,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
             for (int col = 0; col < 9; col++) {
                 // Vanilla slot items render at (slotX + 1, slotY + 1); shift the backplate
                 // slightly up-left so the item appears centered.
-                int sx = x + 8 + col * 18 - 1;
+                int sx = x + PLAYER_INV_LEFT + col * 18 - 1;
                 int sy = y + PLAYER_INV_TOP + row * 18 - 1;
                 context.fill(sx, sy, sx + 18, sy + 18, 0xFF1A1A1A);
                 context.drawBorder(sx, sy, 18, 18, 0xFF555555);
@@ -212,7 +215,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
         // Hotbar (1 row)
         int hotbarY = y + PLAYER_INV_TOP + 58 - 1;
         for (int col = 0; col < 9; col++) {
-            int sx = x + 8 + col * 18 - 1;
+            int sx = x + PLAYER_INV_LEFT + col * 18 - 1;
             context.fill(sx, hotbarY, sx + 18, hotbarY + 18, 0xFF1A1A1A);
             context.drawBorder(sx, hotbarY, 18, 18, 0xFF555555);
         }
@@ -264,7 +267,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
         }
 
         int barX = x + GRIND_SLOT_X + 1;
-        int barY = y + 73;
+        int barY = y + 81;
         int barMaxW = CONTAINER_SLOT_X + 36 - GRIND_SLOT_X - 2;
         int barW = (int) (barMaxW * grindProgress);
 
@@ -279,7 +282,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
             return;
         }
 
-        int btnY = y + 88;
+        int btnY = y + 112;
         int btnX = x + 8;
 
         String label = selectedMasterChem != null
@@ -288,7 +291,7 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
         context.drawTextWithShadow(this.textRenderer, label, btnX, btnY - 10, 0xFFFFFF);
 
         for (int i = 0; i < LABELS.length; i++) {
-            int bx = btnX + i * 14;
+            int bx = btnX + i * TRANSFER_LABELS_GAP;
             boolean hovered = mouseX >= bx && mouseX < bx + 13
                     && mouseY >= btnY && mouseY < btnY + 12;
 
@@ -330,10 +333,10 @@ public class ChemMasterScreen extends HandledScreen<ChemMasterScreenHandler> {
         }
 
         if (selectedMasterChem != null || selectedContainerChem != null) {
-            int btnY = y + 88;
+            int btnY = y + 112;
             int btnX = x + 8;
             for (int i = 0; i < LABELS.length; i++) {
-                int bx = btnX + i * 14;
+                int bx = btnX + i * TRANSFER_LABELS_GAP;
                 if (mouseX >= bx && mouseX < bx + 13 && mouseY >= btnY && mouseY < btnY + 12) {
                     sendTransfer(AMOUNTS[i]);
                     return true;
