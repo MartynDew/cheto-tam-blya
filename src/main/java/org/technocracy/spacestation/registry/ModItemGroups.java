@@ -263,6 +263,7 @@ public final class ModItemGroups {
                         entries.add(PlushieItems.PLUSHIE_XENO);
 
                         // ======== MISC ========
+                        entries.add(MiscItems.ASSEMBLY_KIT_CM);
                         entries.add(MiscItems.BANANIUM);
                         entries.add(MiscItems.BANANIUM_ORE);
                         entries.add(MiscItems.BLOODY_RED_BALLISTIC_PLATE);

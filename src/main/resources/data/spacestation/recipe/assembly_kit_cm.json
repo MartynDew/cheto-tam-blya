@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "BSB",
+    "SSS"
+  ],
+  "key": {
+    "S": { "tag": "spacestation:steel" },
+    "P": { "tag": "spacestation:plasteel" },
+    "B": { "tag": "spacestation:beaker" }
+  },
+  "result": {
+    "id": "spacestation:assembly_kit_cm",
+    "count": 1
+  }
+}
