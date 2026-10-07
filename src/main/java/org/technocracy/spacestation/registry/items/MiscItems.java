@@ -11,6 +11,9 @@ import org.technocracy.spacestation.registry.blocks.PlantBlocks;
 
 public final class MiscItems {
 
+    public static final Item ASSEMBLY_KIT_CM = Registry.register(
+            Registries.ITEM, Identifier.of(SpaceStation.MOD_ID, "assembly_kit_cm"),
+            new Item(new Item.Settings().maxCount(1)));
     public static final Item BANANIUM           = register("bananium");
     public static final Item BANANIUM_ORE           = register("bananium_ore");
     public static final Item CABLE_LV = register("cable_lv");
