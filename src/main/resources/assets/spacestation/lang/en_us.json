@@ -372,5 +372,6 @@
   "quality.spacestation.prying": "Prying",
   "quality.spacestation.anchoring": "Anchoring",
   "death.attack.radiation": "%1$s died of radiation.",
-  "effect.spacestation.radiation": "Radiation"
+  "effect.spacestation.radiation": "Radiation",
+  "effect.spacestation.stimulator": "Stimulator"
 }
