@@ -6,23 +6,23 @@ import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import org.technocracy.spacestation.registry.ModDamageTypes;
+import org.technocracy.spacestation.registry.ModSounds;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class RadiationStatusEffect extends StatusEffect {
-    public RadiationStatusEffect() {
+public class WehStatusEffect extends StatusEffect {
+    public WehStatusEffect() {
         super(
-                StatusEffectCategory.HARMFUL,
+                StatusEffectCategory.NEUTRAL,
                 0x98D982); // color in RGB
     }
 
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
-        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 200, 0));
-        entity.damage(ModDamageTypes.of(entity.getWorld(), ModDamageTypes.RADIATION_DAMAGE_TYPE), 6.0f);
-
+        entity.playSound(ModSounds.PLUSHIE_WEH, 1, ThreadLocalRandom.current().nextFloat(-0.5f, 1.5f));
         return true;
     }
 
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        if (duration % (600/(amplifier+1)) == 0) {
+        if (duration % (100/(amplifier+1)) == 0) {
             return true;
         }
         return false;

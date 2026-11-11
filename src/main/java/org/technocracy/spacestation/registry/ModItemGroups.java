@@ -287,8 +287,8 @@ public final class ModItemGroups {
                         entries.add(MiscItems.STEEL_ORE);
                         entries.add(MiscItems.TELECRYSTAL);
                         entries.add(MiscItems.TRASH_PLASTIC);
-                        entries.add(MiscItems.URANIUM);
-                        entries.add(MiscItems.URANIUM_ORE);
+                        entries.add(RadioactiveItems.URANIUM);
+                        entries.add(RadioactiveItems.URANIUM_ORE);
                     })
                     .build()
     );

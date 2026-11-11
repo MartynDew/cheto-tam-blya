@@ -361,6 +361,7 @@
   "item.spacestation.welder": "Welder",
   "item.spacestation.wrench": "Wrench",
   "subtitles.spacestation.plushie.squeak": "Plushie squeaks",
+  "subtitles.spacestation.plushie.weh": "Weh!",
   "tooltip.spacestation.tool": "This item can be used for§e %s.",
   "tooltip.spacestation.charge": "Fuel: %s",
   "tooltip.spacestation.empty": "Empty",
@@ -371,7 +372,8 @@
   "quality.spacestation.ignition":  "Ignition",
   "quality.spacestation.prying": "Prying",
   "quality.spacestation.anchoring": "Anchoring",
-  "death.attack.radiation": "%1$s died of radiation.",
-  "effect.spacestation.radiation": "Radiation",
-  "effect.spacestation.stimulator": "Stimulator"
+  "death.attack.spacestation.radiation": "%1$s died of radiation.",
+  "effect.spacestation.weh": "Weh",
+  "effect.spacestation.stimulator": "Stimulator",
+  "attribute.name.generic.radiation_protection": "Radiation Protection"
 }

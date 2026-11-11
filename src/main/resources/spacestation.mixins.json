@@ -3,7 +3,8 @@
   "package": "org.technocracy.spacestation.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ServerPlayerEntityMixin"
+    "ServerPlayerEntityMixin",
+    "LivingEntityMixin"
   ],
   "client": [],
   "injectors": {

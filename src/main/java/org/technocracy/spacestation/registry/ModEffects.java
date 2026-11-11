@@ -8,11 +8,11 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import org.technocracy.spacestation.SpaceStation;
-import org.technocracy.spacestation.effect.RadiationStatusEffect;
+import org.technocracy.spacestation.effect.WehStatusEffect;
 
 public class ModEffects {
 
-    public static final StatusEffect RADIATION = register("radiation", new RadiationStatusEffect());
+    public static final StatusEffect WEH = register("weh", new WehStatusEffect());
     public static final StatusEffect STIMULATOR = register("stimulator",
             new StatusEffect(StatusEffectCategory.BENEFICIAL, 16720896) {}
                     .addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, Identifier.ofVanilla("effect.stim_speed"), 0.13, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)

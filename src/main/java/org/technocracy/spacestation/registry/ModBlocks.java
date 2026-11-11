@@ -205,7 +205,8 @@ public final class ModBlocks {
                     .strength(3.0f)
                     .requiresTool()
                     .sounds(BlockSoundGroup.STONE),
-            true
+            true,
+            new Item.Settings().component(ModComponents.RADIATION_GIVER_COMPONENT, 1)
     );
 
     public static final Block URANIUM_ORE_BLOCK = register(
@@ -215,7 +216,8 @@ public final class ModBlocks {
                     .strength(3.0f)
                     .requiresTool()
                     .sounds(BlockSoundGroup.STONE),
-            true
+            true,
+            new Item.Settings().component(ModComponents.RADIATION_GIVER_COMPONENT, 1)
     );
 
     public static final Block CHEM_MASTER = register(
@@ -256,6 +258,25 @@ public final class ModBlocks {
 
         if (registerBlockItem) {
             Registry.register(Registries.ITEM, id, new BlockItem(block, new Item.Settings()));
+        }
+
+        return block;
+    }
+
+    // для блоков с компонентами ввиде итема
+    private static <T extends Block> T register(
+            String name,
+            Function<AbstractBlock.Settings, T> factory,
+            AbstractBlock.Settings settings,
+            boolean registerBlockItem,
+            Item.Settings itemSettings
+    ) {
+        Identifier id = Identifier.of(SpaceStation.MOD_ID, name);
+        T block = factory.apply(settings);
+        Registry.register(Registries.BLOCK, id, block);
+
+        if (registerBlockItem) {
+            Registry.register(Registries.ITEM, id, new BlockItem(block, itemSettings));
         }
 
         return block;

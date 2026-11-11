@@ -13,6 +13,8 @@ import org.technocracy.spacestation.network.ModPackets;
 import org.technocracy.spacestation.registry.*;
 import org.technocracy.spacestation.registry.items.*;
 import org.technocracy.spacestation.system.ActionTimer;
+import org.technocracy.spacestation.system.LivingEntityExt;
+import org.technocracy.spacestation.system.RadiationManager;
 import org.technocracy.spacestation.world.ModLootModifiers;
 import org.technocracy.spacestation.world.ModWorldGeneration;
 
@@ -26,10 +28,15 @@ public class SpaceStation implements ModInitializer {
     @Override
     public void onInitialize() {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
-            server.getPlayerManager().getPlayerList()
-                    .forEach(ActionTimer::tick);
+            server.getPlayerManager().getPlayerList().forEach(player -> {
+                ActionTimer.tick(player);
+                if (server.getTicks() % 20 == 0) {
+                    ((LivingEntityExt) player).ss15$getRadiationManager().tick(player);
+                }
+            });
         });
 
+        ModAttributes.register();
         ModComponents.register();
         ModSounds.register();
         ModItems.register();

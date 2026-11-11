@@ -14,12 +14,14 @@ public class ModComponents {
     public static ComponentType<ChemData> CHEM_DATA;
     public static ComponentType<Float> USE_DELAY_COMPONENT;
     public static ComponentType<Boolean> ITEM_TOGGLE_COMPONENT;
+    public static ComponentType<Integer> RADIATION_GIVER_COMPONENT;
     public static ComponentType<ChargeData> CHARGE_COMPONENT;
 
     public static void register() {
         CHEM_DATA = register("chem_data", ChemData.CODEC, ChemData.PACKET_CODEC);
         USE_DELAY_COMPONENT = register("use_delay", Codec.FLOAT);
         ITEM_TOGGLE_COMPONENT = register("item_toggle", Codec.BOOL);
+        RADIATION_GIVER_COMPONENT = register("radiation_giver", Codec.INT);
         CHARGE_COMPONENT = register("charge", ChargeData.CODEC, ChargeData.PACKET_CODEC);
     }
 

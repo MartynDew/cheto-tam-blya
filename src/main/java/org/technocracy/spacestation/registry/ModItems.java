@@ -14,6 +14,7 @@ public final class ModItems {
         MiscItems.register();
         PlantItems.register();
         ArmorItems.register();
+        RadioactiveItems.register();
     }
 
     private ModItems() {}

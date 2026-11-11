@@ -16,5 +16,11 @@
     "sounds": [
       "spacestation:plushie/squeak3"
     ]
+  },
+  "plushie.weh": {
+    "subtitle": "subtitles.spacestation.plushie.weh",
+    "sounds": [
+      "spacestation:plushie/weh"
+    ]
   }
 }

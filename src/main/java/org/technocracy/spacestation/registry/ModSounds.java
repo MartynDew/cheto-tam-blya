@@ -11,6 +11,7 @@ public final class ModSounds {
     public static final SoundEvent PLUSHIE_SQUEAK_1 = register("plushie.squeak1");
     public static final SoundEvent PLUSHIE_SQUEAK_2 = register("plushie.squeak2");
     public static final SoundEvent PLUSHIE_SQUEAK_3 = register("plushie.squeak3");
+    public static final SoundEvent PLUSHIE_WEH = register("plushie.weh");
 
     private ModSounds() {}
 
